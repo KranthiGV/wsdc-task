@@ -42,9 +42,9 @@ if(Input::exists()){
 					'groups' => 1
 				));
 				
-				
+				Session::flash('home','Succesfully registered! Login now!');
+				Redirect::to('index.php');
 			} catch(Exception $e){
-				//DB::getInstance()->insert('users', )
 				die($e->getMessage());
 			 }
 			

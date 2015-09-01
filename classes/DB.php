@@ -54,7 +54,8 @@ class DB{
 			$operator = $where[1];
 			$value = $where[2];
 			if(in_array($operator, $operators)){
-				$sql = "SELECT {$action} FROM {$table} WHERE {$field} {$operator} ?";
+				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
+				//echo $sql;
 				if($this->query($sql, array($value))->error()){
 					// There is no error					
 					return $this;
