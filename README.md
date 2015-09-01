@@ -1,5 +1,5 @@
 TODO
 >>
-Logout
-Change Password
-Profile
+*Logout
+*Change Password
+*Profile
