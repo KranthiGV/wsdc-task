@@ -1,7 +1,7 @@
 TODO
 >>
-*Logout
+- Logout
 
-*Change Password
+- Change Password
 
-*Profile
+- Profile
