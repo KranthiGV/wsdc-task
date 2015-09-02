@@ -1,9 +1,10 @@
 <?php 
 class User {
-	private $_db, $_data;
+	private $_db, $_data, $_sessionName;
 	
 	public function __construct($user = null){
 		$this->_db = DB::getInstance();
+		$this->_sessionName = Config::get('session/session_name');
 	
 	}
 	
@@ -32,7 +33,9 @@ class User {
 		//print_r($this->_data);
 		if($user){
 			if($this->data()->password == Hash::make($password, $this->data()->salt)){
+				Session::put($this->_sessionName, $this->data()->id);
 				echo "Credentials verified!";
+				return true;
 			}
 		}
 		

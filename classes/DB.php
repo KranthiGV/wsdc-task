@@ -37,6 +37,7 @@ class DB{
 			if($this->_query->execute()){
 				$this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
 				$this->_count = $this->_query->rowCount();
+				//echo $this->_count;
 			} else {
 				$this->_error = true;
 			}
@@ -55,8 +56,8 @@ class DB{
 			$value = $where[2];
 			if(in_array($operator, $operators)){
 				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
-				//echo $sql;
-				if($this->query($sql, array($value))->error()){
+				
+				if(!$this->query($sql, array($value))->error()){
 					// There is no error					
 					return $this;
 				
@@ -67,7 +68,9 @@ class DB{
 		return false;
 	}
 	public function get($table, $where){
+		
 		return $this->action('SELECT *', $table, $where);
+		
 	}
 	public function delete($table, $where){
 		return $this->action('DELETE *', $table, $where);
